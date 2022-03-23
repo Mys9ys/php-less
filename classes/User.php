@@ -13,15 +13,7 @@ class User
         $this->name = $name; // запишем новое значение свойства name
     }
 
-    // Метод для проверки возраста:
-    public function isAgeCorrect($age)
-    {
-        if ($age >= 18 and $age <= 60) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+
 
     // Метод для изменения возраста юзера:
     public function setAge($age)
@@ -40,6 +32,16 @@ class User
         // Проверим возраст на корректность:
         if ($this->isAgeCorrect($newAge)) {
             $this->age = $newAge; // обновим, если новый возраст прошел проверку
+        }
+    }
+
+    // Метод для проверки возраста:
+    private function isAgeCorrect($age)
+    {
+        if ($age >= 18 and $age <= 60) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
