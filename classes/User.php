@@ -7,6 +7,13 @@ class User
     public $name;
     public $age;
 
+    // Конструктор объекта:
+    public function __construct($name, $age)
+    {
+        $this->name = $name; // запишем данные в свойство name
+        $this->age = $age; // запишем данные в свойство age
+    }
+
     // Метод для изменения имени юзера:
     public function setName($name)
     {
