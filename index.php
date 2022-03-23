@@ -28,10 +28,18 @@ $user1 = new User('john', 25);
 $user2 = new User('eric', 5);
 
 // Найдем сумму возрастов:
-echo $user1->age + $user2->age; // выведет 55
+echo $user1->getAge() + $user2->getAge(); // выведет 55
+
+$users = [
+    new User('john', 21),
+    new User('eric', 22),
+    new User('kyle', 23)
+];
 
 
 
 print_debug($myCar);
 print_debug($user1);
 print_debug($user2);
+
+print_debug($users, 'users');

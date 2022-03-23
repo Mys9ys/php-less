@@ -4,8 +4,8 @@ namespace classes;
 
 class User
 {
-    public $name;
-    public $age;
+    private $name;
+    private $age;
 
     // Конструктор объекта:
     public function __construct($name, $age)
@@ -14,32 +14,23 @@ class User
         $this->age = $age; // запишем данные в свойство age
     }
 
-    // Метод для изменения имени юзера:
-    public function setName($name)
+
+    // Геттер для имени:
+    public function getName()
     {
-        $this->name = $name; // запишем новое значение свойства name
+        return $this->name;
     }
 
+    // Геттер для возраста:
+    public function getAge()
+    {
+        return $this->age;
+    }
 
-
-    // Метод для изменения возраста юзера:
+    // Сеттер для возраста:
     public function setAge($age)
     {
-        // Проверим возраст на корректность:
-        if ($this->isAgeCorrect($age)) {
-            $this->age = $age;
-        }
-    }
-
-    // Метод для добавления к возрасту:
-    public function addAge($years)
-    {
-        $newAge = $this->age + $years; // вычислим новый возраст
-
-        // Проверим возраст на корректность:
-        if ($this->isAgeCorrect($newAge)) {
-            $this->age = $newAge; // обновим, если новый возраст прошел проверку
-        }
+        $this->age = $age;
     }
 
     // Метод для проверки возраста:
