@@ -1,6 +1,7 @@
 <?php
 
 use classes\Arr;
+use classes\Arr2;
 use classes\Car;
 use classes\Employee;
 use classes\Student;
@@ -70,3 +71,12 @@ $student->setCourse(3);    // установим курс
 $student->addOneYear();    // увеличим возраст на единицу
 print_debug($student);
 
+$arr = new Arr2(); // создаем объект
+
+$arr->add(1); // добавляем в массив число 1
+$arr->add(2); // добавляем в массив число 2
+$arr->add(3); // добавляем в массив число 3
+
+// Находим сумму квадратов и кубов:
+
+print_debug($arr->getSum23());
