@@ -52,4 +52,6 @@ $arr->add(5); // добавляем в конец массива число 5
 // Находим сумму элементов массива:
 print_debug($arr->getSum());
 
-print_debug((new Arr([1, 2, 3]))->getSum());
+print_debug($arr->add(1)->add(2)->push([3, 4])->getSum());
+print_debug($arr);
+print_debug((new Arr)->add(7)->add(2)->push([3, 4, 8])->getSum());
