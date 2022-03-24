@@ -2,6 +2,7 @@
 
 use classes\Arr;
 use classes\Car;
+use classes\Employee;
 use classes\User;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/internal_settings.php';
@@ -55,3 +56,8 @@ print_debug($arr->getSum());
 print_debug($arr->add(1)->add(2)->push([3, 4])->getSum());
 print_debug($arr);
 print_debug((new Arr)->add(7)->add(2)->push([3, 4, 8])->getSum());
+
+$sal = new Employee('kyle', 23);
+$sal->setSalary('sal');
+
+print_debug($sal);
