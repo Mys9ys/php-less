@@ -3,6 +3,7 @@
 use classes\Arr;
 use classes\Car;
 use classes\Employee;
+use classes\Student;
 use classes\User;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/internal_settings.php';
@@ -61,3 +62,11 @@ $sal = new Employee('kyle', 23);
 $sal->setSalary('sal');
 
 print_debug($sal);
+
+$student = new Student('john', 25);
+
+$student->setCourse(3);    // установим курс
+
+$student->addOneYear();    // увеличим возраст на единицу
+print_debug($student);
+

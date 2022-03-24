@@ -5,7 +5,7 @@ namespace classes;
 class User
 {
     private $name;
-    private $age;
+    protected $age;
 
     // Конструктор объекта:
     public function __construct($name, $age)
