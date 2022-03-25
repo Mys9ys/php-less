@@ -4,6 +4,8 @@ use classes\Arr;
 use classes\Arr2;
 use classes\Car;
 use classes\Employee;
+use classes\Employee2;
+use classes\EmployeesCollection;
 use classes\Student;
 use classes\User;
 
@@ -80,3 +82,13 @@ $arr->add(3); // добавляем в массив число 3
 // Находим сумму квадратов и кубов:
 
 print_debug($arr->getSum23());
+
+$employeesCollection = new EmployeesCollection;
+
+$employeesCollection->add(new Employee2('john', 100));
+$employeesCollection->add(new Employee2('eric', 200));
+$employeesCollection->add(new Employee2('kyle', 300));
+
+echo $employeesCollection->getTotalSalary(); // выведет 600
+
+print_debug($employeesCollection);
