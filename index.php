@@ -5,9 +5,12 @@ use classes\Arr2;
 use classes\Car;
 use classes\Employee;
 use classes\Employee2;
+use classes\Employee3;
 use classes\EmployeesCollection;
 use classes\Student;
+use classes\Student2;
 use classes\User;
+use classes\UsersCollection;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/internal_settings.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/functions.php';
@@ -92,3 +95,20 @@ $employeesCollection->add(new Employee2('kyle', 300));
 echo $employeesCollection->getTotalSalary(); // выведет 600
 
 print_debug($employeesCollection);
+
+$usersCollection = new UsersCollection;
+
+$usersCollection->add(new Student2('kyle', 100));
+$usersCollection->add(new Student2('luis', 200));
+
+$usersCollection->add(new Employee3('john', 300));
+$usersCollection->add(new Employee3('eric', 400));
+
+// Получим полную сумму стипендий:
+echo $usersCollection->getTotalScholarship() . PHP_EOL ;
+
+// Получим полную сумму зарплат:
+echo $usersCollection->getTotalSalary() . PHP_EOL;
+
+// Получим полную сумму платежей:
+echo $usersCollection->getTotalPayment() . PHP_EOL ;
