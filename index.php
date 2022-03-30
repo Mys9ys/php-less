@@ -95,3 +95,5 @@ echo $employeesCollection->getTotalSalary(); // выведет 600
 print_debug($employeesCollection);
 
 echo Math::getSum(1, 2) + Math::getProduct(3, 4);
+
+print_debug(Math::getDoubleSum(1, 2));
