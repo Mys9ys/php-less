@@ -8,6 +8,7 @@ use classes\Employee2;
 use classes\EmployeesCollection;
 use classes\Math;
 use classes\Student;
+use classes\TestStatic;
 use classes\User;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/internal_settings.php';
@@ -97,3 +98,15 @@ print_debug($employeesCollection);
 echo Math::getSum(1, 2) + Math::getProduct(3, 4);
 
 print_debug(Math::getDoubleSum(1, 2));
+
+// Cоздаем объект класса:
+$test = new TestStatic;
+
+// Записываем значение в статическое свойство:
+$test::$staticProperty  = 'static';
+
+// Выводим значение, обратившись к классу:
+echo TestStatic::$staticProperty; // выведет 'static'
+
+// Выводим значение, обратившись к объекту класса:
+echo $test::$staticProperty; // выведет 'static'
