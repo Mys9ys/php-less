@@ -90,9 +90,5 @@ $employeesCollection->add(new Employee2('eric', 200));
 $employeesCollection->add(new Employee2('kyle', 300));
 
 echo $employeesCollection->getTotalSalary(); // выведет 600
-echo $employeesCollection->count(); // выведет 600
 
 print_debug($employeesCollection);
-
-print_debug($employeesCollection instanceof EmployeesCollection);
-print_debug(($employeesCollection instanceof User), 'test');
