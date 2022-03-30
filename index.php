@@ -6,6 +6,7 @@ use classes\Car;
 use classes\Employee;
 use classes\Employee2;
 use classes\EmployeesCollection;
+use classes\Math;
 use classes\Student;
 use classes\User;
 
@@ -92,3 +93,5 @@ $employeesCollection->add(new Employee2('kyle', 300));
 echo $employeesCollection->getTotalSalary(); // выведет 600
 
 print_debug($employeesCollection);
+
+echo Math::getSum(1, 2) + Math::getProduct(3, 4);
