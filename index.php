@@ -10,6 +10,7 @@ use classes\Math;
 use classes\Student;
 use classes\TestStatic;
 use classes\User;
+use classes\User2;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/internal_settings.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/functions.php';
@@ -110,3 +111,9 @@ echo TestStatic::$staticProperty; // выведет 'static'
 
 // Выводим значение, обратившись к объекту класса:
 echo $test::$staticProperty; // выведет 'static'
+
+$user1 = new User2('user1'); // создаем первый объект класса
+echo User2::getCount() . PHP_EOL; //выведет 1
+
+$user2 = new User2('user2'); // создаем второй объект класса
+echo User2::getCount() . PHP_EOL; //выведет 2
