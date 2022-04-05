@@ -5,6 +5,7 @@ use classes\Arr2;
 use classes\Car;
 use classes\Employee;
 use classes\Employee2;
+use classes\EmployeeAbstract;
 use classes\EmployeesCollection;
 use classes\Math;
 use classes\Student;
@@ -117,3 +118,12 @@ echo User2::getCount() . PHP_EOL; //выведет 1
 
 $user2 = new User2('user2'); // создаем второй объект класса
 echo User2::getCount() . PHP_EOL; //выведет 2
+
+
+$employee = new EmployeeAbstract();
+$employee->setName('john');      // установим имя
+$employee->setSalary(1000);      // установим зарплату
+$employee->increaseRevenue(100); // увеличим зарплату
+
+echo '<br>';
+echo $employee->getSalary();     // выведет 1100
