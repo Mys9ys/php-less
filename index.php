@@ -9,7 +9,9 @@ use classes\EmployeeAbstract;
 use classes\EmployeesCollection;
 use classes\Math;
 use classes\Student;
+use classes\tCity;
 use classes\TestStatic;
+use classes\tUser;
 use classes\User;
 use classes\User2;
 
@@ -127,3 +129,17 @@ $employee->increaseRevenue(100); // увеличим зарплату
 
 echo '<br>';
 echo $employee->getSalary();     // выведет 1100
+
+
+echo '<br>';
+$user = new tUser('john', 30);
+echo $user->getName(); // выведет 'john'
+
+echo '<br>';
+echo $user->getAge();  // выведет 30
+
+echo '<br>';
+$city = new tCity('Minsk', 1000);
+echo $city->getName(); // выведет 'Minsk'
+echo '<br>';
+echo $city->getAge();  // выведет 1000
