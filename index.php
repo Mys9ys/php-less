@@ -7,6 +7,7 @@ use classes\Employee;
 use classes\Employee2;
 use classes\EmployeeAbstract;
 use classes\EmployeesCollection;
+use classes\Magic;
 use classes\Math;
 use classes\Student;
 use classes\tCity;
@@ -143,3 +144,15 @@ $city = new tCity('Minsk', 1000);
 echo $city->getName(); // выведет 'Minsk'
 echo '<br>';
 echo $city->getAge();  // выведет 1000
+
+$test = new Magic();
+
+$test->prop1 = 1; // запишем 1
+$test->prop2 = 2; // запишем 2
+echo '<br>';
+echo $test->prop1; // выведет 1
+echo '<br>';
+echo $test->prop2; // выведет 2
+echo '<br>';
+$test->prop3 = 3; // запишем 3
+echo $test->prop3; // выведет 3
