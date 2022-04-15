@@ -1,4 +1,5 @@
 <?php
+
 namespace template;
 
 class Date
@@ -8,7 +9,7 @@ class Date
     public function __construct($date = null)
     {
         // если дата не передана - пусть берется текущая
-        if(empty($date)) $date = date('y-m-d');
+        if (empty($date)) $date = date('y-m-d');
 
         $this->date = $date;
     }
@@ -21,10 +22,10 @@ class Date
 
     public function getMonth($lang = null)
     {
-        $months = array( 1 => 'Январь' , 'Февраль' , 'Март' , 'Апрель' , 'Май' , 'Июнь' , 'Июль' , 'Август' , 'Сентябрь' , 'Октябрь' , 'Ноябрь' , 'Декабрь' );
-        switch ($lang){
+        $months = array(1 => 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь');
+        switch ($lang) {
             case 'ru':
-                return date($months[date( 'n' )], strtotime($this->date));
+                return date($months[date('n')], strtotime($this->date));
                 break;
             case 'en':
                 return date("F", strtotime($this->date));
@@ -47,6 +48,17 @@ class Date
 
     public function getWeekDay($lang = null)
     {
+        $days = array(1 => 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье');
+        switch ($lang) {
+            case 'ru':
+                return date($days[date('N')], strtotime($this->date));
+                break;
+            case 'en':
+                return date("l", strtotime($this->date));
+                break;
+            default:
+                return date("N", strtotime($this->date));
+        }
         // возвращает день недели
 
         // переменная $lang может принимать значение ru или en
@@ -56,6 +68,13 @@ class Date
     public function addDay($value)
     {
         // добавляет значение $value к дню
+
+//        return false;
+        return (string)date("y-m-d", strtotime("+" . $value . " days", strtotime($this->date)));
+//        var_dump(date("y-m-d", strtotime("+" . $value . " days", strtotime($this->date))));
+//        $this->date = date("y-m-d", strtotime("+" . $value . " days", strtotime($this->date)));
+//        return $this;
+
     }
 
     public function subDay($value)
@@ -76,6 +95,8 @@ class Date
     public function addYear($value)
     {
         // добавляет значение $value к году
+        $this->date = date("y-m-d", strtotime("+" . $value . " year", strtotime($this->date)));
+        return $this;
     }
 
     public function subYear($value)
