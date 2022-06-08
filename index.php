@@ -88,3 +88,70 @@ echo $tag
     ->setAttr('id', 'test')
     ->setAttr('disabled', true)
     ->open(); // выведет <input id="test" disabled>
+
+$tag = new Tag('input');
+
+echo $tag
+    ->setAttr('id', 'test')
+    ->setAttr('class', 'eee bbb')
+    ->open();
+
+echo (new Tag('input'))
+    ->setAttr('id', 'test')
+    ->setAttr('class', 'eee bbb')
+    ->open();
+
+?>
+<br>
+<?php
+// Выведет <input class="eee">:
+echo (new Tag('input'))->addClass('eee')->open();
+?>
+<?php
+// Выведет <input class="eee bbb">:
+echo (new Tag('input'))->addClass('eee')->addClass('bbb')->open();
+?>
+<?php
+// Выведет <input class="eee bbb kkk">:
+echo (new Tag('input'))
+    ->setAttr('class', 'eee bbb')
+    ->addClass('kkk')->open();
+?>
+<?php
+// Выведет <input class="eee bbb">:
+echo (new Tag('input'))
+    ->setAttr('class', 'eee bbb')
+    ->addClass('eee') // такой класс уже есть и не добавится
+    ->open();
+?>
+
+<?php
+// Выведет <input class="eee bbb">:
+echo (new Tag('input'))
+    ->addClass('eee')
+    ->addClass('bbb')
+    ->addClass('eee') // такой класс уже есть и не добавится
+    ->open();
+?>
+
+<?php
+echo (new Tag('input'))
+    ->setAttr('class', 'eee zzz kkk') // добавим 3 класса
+    ->removeClass('zzz') // удалим класс 'zzz'
+    ->open(); // выведет <input class="eee kkk">
+?>
+
+<?php
+
+$newTag = new Tag('span');
+
+$newTag->setAttr('id', 'newTag')->setAttr('class', 'eee zzz kkk');
+
+echo $newTag->open() . 'text' . $newTag->close();
+
+print_debug($newTag->getName());
+print_debug($newTag->getAttrs());
+print_debug($newTag->getAttr('id'));
+print_debug($newTag->getAttr('ids'));
+
+?>

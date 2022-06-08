@@ -12,6 +12,27 @@ class Tag
         $this->name = $name;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getAttrs()
+    {
+        return $this->attrs;
+    }
+
+    public function getAttr($name)
+    {
+        return $this->attrs[$name] ?: 'null';
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
     // Реализуем метод для атрибутов:
     public function setAttr($name, $value)
     {
@@ -45,6 +66,22 @@ class Tag
         return "</$this->name>";
     }
 
+    public function addClass($className)
+    {
+        if (isset($this->attrs['class'])) {
+            $classNames = explode(' ', $this->attrs['class']);
+
+            if (!in_array($className, $classNames)) {
+                $classNames[] = $className;
+                $this->attrs['class'] = implode(' ', $classNames);
+            }
+        } else {
+            $this->attrs['class'] = $className;
+        }
+
+        return $this;
+    }
+
     private function getAttrsStr($attrs)
     {
         if (!empty($attrs)) {
@@ -63,5 +100,27 @@ class Tag
         } else {
             return '';
         }
+    }
+
+    private function removeElem($elem, $arr)
+    {
+        $key = array_search($elem, $arr); // находим ключ элемента по его тексту
+        array_splice($arr, $key, 1); // удаляем элемент
+
+        return $arr; // возвращаем измененный массив
+    }
+
+    public function removeClass($className)
+    {
+        if (isset($this->attrs['class'])) {
+            $classNames = explode(' ', $this->attrs['class']);
+
+            if (in_array($className, $classNames)) {
+                $classNames = $this->removeElem($className, $classNames);
+                $this->attrs['class'] = implode(' ', $classNames);
+            }
+        }
+
+        return $this;
     }
 }
