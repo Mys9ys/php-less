@@ -81,3 +81,10 @@ echo $tag
     ->setAttrs(['id' => 'test', 'class' => 'eee'])
     ->setAttr('type', 'text')
     ->open(); // выведет <input id="test" class="eee" type="text">
+
+$tag = new Tag('input');
+
+echo $tag
+    ->setAttr('id', 'test')
+    ->setAttr('disabled', true)
+    ->open(); // выведет <input id="test" disabled>
