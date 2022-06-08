@@ -2,19 +2,29 @@
 
 namespace classes;
 
-class Tag
+use interfaces\iTag;
+
+class Tag implements iTag
 {
     private $name;
-    private $attrs;
+    private $attrs = [];
+    private $text = '';
 
     public function __construct($name)
     {
         $this->name = $name;
     }
 
-    /**
-     * @return mixed
-     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getText()
+    {
+        return $this->text;
+    }
+
     public function getAttrs()
     {
         return $this->attrs;
@@ -22,26 +32,41 @@ class Tag
 
     public function getAttr($name)
     {
-        return $this->attrs[$name] ?: 'null';
+        if (isset($this->attrs[$name])) {
+            return $this->attrs[$name];
+        } else {
+            return null;
+        }
     }
 
-    /**
-     * @return mixed
-     */
-    public function getName()
+    public function show()
     {
-        return $this->name;
+        return $this->open() . $this->text . $this->close();
     }
 
-    // Реализуем метод для атрибутов:
-    public function setAttr($name, $value)
+    public function open()
+    {
+        $name = $this->name;
+        $attrsStr = $this->getAttrsStr($this->attrs);
+
+        return "<$name$attrsStr>";
+    }
+
+    public function close()
+    {
+        $name = $this->name;
+        return "</$name>";
+    }
+
+    public function setText($text)
+    {
+        $this->text = $text;
+        return $this;
+    }
+
+    public function setAttr($name, $value = true)
     {
         $this->attrs[$name] = $value;
-        return $this; // возвращаем $this чтобы была цепочка
-    }
-
-    public function removeAttr($name){
-        unset($this->attrs[$name]);
         return $this;
     }
 
@@ -54,16 +79,10 @@ class Tag
         return $this;
     }
 
-    // Выводим открывающую часть тега:
-    public function open()
+    public function removeAttr($name)
     {
-        $attrs = $this->getAttrsStr($this->attrs);
-        return "<$this->name $attrs>";
-    }
-
-    public function close()
-    {
-        return "</$this->name>";
+        unset($this->attrs[$name]);
+        return $this;
     }
 
     public function addClass($className)
@@ -82,34 +101,6 @@ class Tag
         return $this;
     }
 
-    private function getAttrsStr($attrs)
-    {
-        if (!empty($attrs)) {
-            $result = '';
-
-            foreach ($attrs as $name => $value) {
-                // Если значение атрибута равно true:
-                if ($value === true) {
-                    $result .= " $name"; // это атрибут без значения
-                } else {
-                    $result .= " $name=\"$value\""; // это атрибут со значением
-                }
-            }
-
-            return $result;
-        } else {
-            return '';
-        }
-    }
-
-    private function removeElem($elem, $arr)
-    {
-        $key = array_search($elem, $arr); // находим ключ элемента по его тексту
-        array_splice($arr, $key, 1); // удаляем элемент
-
-        return $arr; // возвращаем измененный массив
-    }
-
     public function removeClass($className)
     {
         if (isset($this->attrs['class'])) {
@@ -122,5 +113,32 @@ class Tag
         }
 
         return $this;
+    }
+
+    private function getAttrsStr($attrs)
+    {
+        if (!empty($attrs)) {
+            $result = '';
+
+            foreach ($attrs as $name => $value) {
+                if ($value === true) {
+                    $result .= " $name";
+                } else {
+                    $result .= " $name=\"$value\"";
+                }
+            }
+
+            return $result;
+        } else {
+            return '';
+        }
+    }
+
+    private function removeElem($elem, $arr)
+    {
+        $key = array_search($elem, $arr);
+        array_splice($arr, $key, 1);
+
+        return $arr;
     }
 }
