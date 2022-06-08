@@ -2,6 +2,7 @@
 
 use classes\Date;
 use classes\File;
+use classes\Image;
 use classes\Interval;
 use classes\Tag;
 
@@ -154,4 +155,8 @@ print_debug($newTag->getAttrs());
 print_debug($newTag->getAttr('id'));
 print_debug($newTag->getAttr('ids'));
 
+$img1 = new Image();
+$img1->setAttr('src', 'img/shield_1.png');
+$img1->setAttrs(['width'=>200, 'heigth'=>200]);
+echo $img1;
 ?>
