@@ -3,6 +3,7 @@
 use classes\Date;
 use classes\File;
 use classes\Interval;
+use classes\Tag;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/internal_settings.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/functions.php';
@@ -28,20 +29,55 @@ $date2 = new Date('2022-06-03');
 //print_debug($interval->toMonths());
 //print_debug($interval->toYears());
 
-$file = new File('files/test.txt');
+//$file = new File('files/test.txt');
+//
+//print_debug($file);
+//print_debug($file->getName());
+//print_debug($file->getDir());
+//print_debug($file->getExt());
+//print_debug($file->getSize());
 
-print_debug($file);
-print_debug($file->getName());
-print_debug($file->getDir());
-print_debug($file->getExt());
-print_debug($file->getSize());
+
+//$file->setText('tesst test');
+//$file->appendText('t432234t');
+//print_debug($file->getText());
+//
+//$file->copy('files/copy.txt');
+////$file->delete();
+////$file->rename('new');
+//print_debug($file->replace('upload/new2.txt'));
+
+//$tag = new Tag('input');
+
+//echo $tag->open('input');
+//
+//$div = new Tag('div');
+
+//echo $div->open() . 'Element Div' . $div->close();
 
 
-$file->setText('tesst test');
-$file->appendText('t432234t');
-print_debug($file->getText());
+//$img = new Tag('img');
 
-$file->copy('files/copy.txt');
-//$file->delete();
-//$file->rename('new');
-print_debug($file->replace('upload/new2.txt'));
+//echo $img->open();
+
+//$tag = new Tag('input', ['id' => 'test', 'class' => 'eee bbb']);
+//echo $tag->open(); // выведет <input id="test" class="eee bbb">
+
+$tag = new Tag('input');
+
+echo $tag
+    ->setAttr('id', 'test1') // добавляем атрибут 'id'
+    ->setAttr('class', 'eee1 bbb') // добавляем атрибут 'class'
+    ->removeAttr('clathss') // добавляем атрибут 'class'
+    ->open(); // выведет <input id="test" class="eee bbb">
+
+$tag = new Tag('div');
+echo $tag->setAttr('id', 'test')->open(); // откроем тег
+echo $tag->close(); // закроем тег
+
+$tag = new Tag('input');
+
+echo $tag
+    ->setAttrs(['id' => 'test', 'class' => 'eee'])
+    ->setAttr('type', 'text')
+    ->open(); // выведет <input id="test" class="eee" type="text">

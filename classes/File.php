@@ -87,7 +87,6 @@ class File implements iFile
 
     public function replace($newPath)
     {
-        var_dump('tyt');
         // перемещает файл
         return rename($this->filePath, $newPath);
     }
