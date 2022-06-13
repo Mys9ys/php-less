@@ -2,9 +2,14 @@
 
 use classes\Date;
 use classes\File;
+use classes\HtmlList;
 use classes\Image;
 use classes\Interval;
+use classes\Link;
+use classes\ListItem;
+use classes\Ol;
 use classes\Tag;
+use classes\Ul;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/internal_settings.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/functions.php';
@@ -64,45 +69,45 @@ $date2 = new Date('2022-06-03');
 //$tag = new Tag('input', ['id' => 'test', 'class' => 'eee bbb']);
 //echo $tag->open(); // выведет <input id="test" class="eee bbb">
 
-$tag = new Tag('input');
-
-echo $tag
-    ->setAttr('id', 'test1') // добавляем атрибут 'id'
-    ->setAttr('class', 'eee1 bbb') // добавляем атрибут 'class'
-    ->removeAttr('clathss') // добавляем атрибут 'class'
-    ->open(); // выведет <input id="test" class="eee bbb">
-
-$tag = new Tag('div');
-echo $tag->setAttr('id', 'test')->open(); // откроем тег
-echo $tag->close(); // закроем тег
-
-$tag = new Tag('input');
-
-echo $tag
-    ->setAttrs(['id' => 'test', 'class' => 'eee'])
-    ->setAttr('type', 'text')
-    ->open(); // выведет <input id="test" class="eee" type="text">
-
-$tag = new Tag('input');
-
-echo $tag
-    ->setAttr('id', 'test')
-    ->setAttr('disabled', true)
-    ->open(); // выведет <input id="test" disabled>
-
-$tag = new Tag('input');
-
-echo $tag
-    ->setAttr('id', 'test')
-    ->setAttr('class', 'eee bbb')
-    ->open();
-
-echo (new Tag('input'))
-    ->setAttr('id', 'test')
-    ->setAttr('class', 'eee bbb')
-    ->open();
-
-?>
+//$tag = new Tag('input');
+//
+//echo $tag
+//    ->setAttr('id', 'test1') // добавляем атрибут 'id'
+//    ->setAttr('class', 'eee1 bbb') // добавляем атрибут 'class'
+//    ->removeAttr('clathss') // добавляем атрибут 'class'
+//    ->open(); // выведет <input id="test" class="eee bbb">
+//
+//$tag = new Tag('div');
+//echo $tag->setAttr('id', 'test')->open(); // откроем тег
+//echo $tag->close(); // закроем тег
+//
+//$tag = new Tag('input');
+//
+//echo $tag
+//    ->setAttrs(['id' => 'test', 'class' => 'eee'])
+//    ->setAttr('type', 'text')
+//    ->open(); // выведет <input id="test" class="eee" type="text">
+//
+//$tag = new Tag('input');
+//
+//echo $tag
+//    ->setAttr('id', 'test')
+//    ->setAttr('disabled', true)
+//    ->open(); // выведет <input id="test" disabled>
+//
+//$tag = new Tag('input');
+//
+//echo $tag
+//    ->setAttr('id', 'test')
+//    ->setAttr('class', 'eee bbb')
+//    ->open();
+//
+//echo (new Tag('input'))
+//    ->setAttr('id', 'test')
+//    ->setAttr('class', 'eee bbb')
+//    ->open();
+//
+//?>
 <br>
 <?php
 // Выведет <input class="eee">:
@@ -143,20 +148,42 @@ echo (new Tag('input'))
 ?>
 
 <?php
-
-$newTag = new Tag('span');
-
-$newTag->setAttr('id', 'newTag')->setAttr('class', 'eee zzz kkk');
-
-echo $newTag->open() . 'text' . $newTag->close();
-
-print_debug($newTag->getName());
-print_debug($newTag->getAttrs());
-print_debug($newTag->getAttr('id'));
-print_debug($newTag->getAttr('ids'));
-
-$img1 = new Image();
-$img1->setAttr('src', 'img/shield_1.png');
-$img1->setAttrs(['width'=>200, 'heigth'=>200]);
-echo $img1;
+//
+//$newTag = new Tag('span');
+//
+//$newTag->setAttr('id', 'newTag')->setAttr('class', 'eee zzz kkk');
+//
+//echo $newTag->open() . 'text' . $newTag->close();
+//
+//print_debug($newTag->getName());
+//print_debug($newTag->getAttrs());
+//print_debug($newTag->getAttr('id'));
+//print_debug($newTag->getAttr('ids'));
+//
+//$img1 = new Image();
+//$img1->setAttr('src', 'img/shield_1.png');
+//$img1->setAttrs(['width'=>200, 'height'=>200]);
+//echo $img1;
+//
+//echo (new Link())->setText('index')->show();
+//
+//echo (new Link())->setAttr('href', '/test.html')->setText('link')->show();
+//
 ?>
+<?php
+$list = new HtmlList('ul');
+
+$ul = new Ul;
+$ol = new Ol;
+
+echo $ul->setAttr('class', 'eee')
+    ->addItem((new ListItem())->setText('item1')->setAttr('class', 'first'))
+    ->addItem((new ListItem())->setText('item2'))
+    ->addItem((new ListItem())->setText('item3'))
+    ->show();
+
+
+echo $ol->setAttr('class', 'eee')
+    ->addItem((new ListItem())->setText('item1')->setAttr('class', 'first'))
+    ->addItem((new ListItem())->setText('item2'))
+    ->addItem((new ListItem())->setText('item3'));
