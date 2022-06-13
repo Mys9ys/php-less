@@ -2,6 +2,7 @@
 
 use classes\Date;
 use classes\File;
+use classes\Form;
 use classes\HtmlList;
 use classes\Image;
 use classes\Interval;
@@ -171,19 +172,28 @@ echo (new Tag('input'))
 //
 ?>
 <?php
-$list = new HtmlList('ul');
+//$list = new HtmlList('ul');
+//
+//$ul = new Ul;
+//$ol = new Ol;
+//
+//echo $ul->setAttr('class', 'eee')
+//    ->addItem((new ListItem())->setText('item1')->setAttr('class', 'first'))
+//    ->addItem((new ListItem())->setText('item2'))
+//    ->addItem((new ListItem())->setText('item3'))
+//    ->show();
+//
+//
+//echo $ol->setAttr('class', 'eee')
+//    ->addItem((new ListItem())->setText('item1')->setAttr('class', 'first'))
+//    ->addItem((new ListItem())->setText('item2'))
+//    ->addItem((new ListItem())->setText('item3'));
 
-$ul = new Ul;
-$ol = new Ol;
+$form = (new Form)->setAttrs([
+    'action' => 'test.php',
+    'method' => 'POST'
+]);
 
-echo $ul->setAttr('class', 'eee')
-    ->addItem((new ListItem())->setText('item1')->setAttr('class', 'first'))
-    ->addItem((new ListItem())->setText('item2'))
-    ->addItem((new ListItem())->setText('item3'))
-    ->show();
-
-
-echo $ol->setAttr('class', 'eee')
-    ->addItem((new ListItem())->setText('item1')->setAttr('class', 'first'))
-    ->addItem((new ListItem())->setText('item2'))
-    ->addItem((new ListItem())->setText('item3'));
+echo $form->open();
+// здесь потом будут элементы формы
+echo $form->close();
