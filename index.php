@@ -5,6 +5,7 @@ use classes\File;
 use classes\Form;
 use classes\HtmlList;
 use classes\Image;
+use classes\Input;
 use classes\Interval;
 use classes\Link;
 use classes\ListItem;
@@ -172,28 +173,10 @@ echo (new Tag('input'))
 //
 ?>
 <?php
-//$list = new HtmlList('ul');
-//
-//$ul = new Ul;
-//$ol = new Ol;
-//
-//echo $ul->setAttr('class', 'eee')
-//    ->addItem((new ListItem())->setText('item1')->setAttr('class', 'first'))
-//    ->addItem((new ListItem())->setText('item2'))
-//    ->addItem((new ListItem())->setText('item3'))
-//    ->show();
-//
-//
-//echo $ol->setAttr('class', 'eee')
-//    ->addItem((new ListItem())->setText('item1')->setAttr('class', 'first'))
-//    ->addItem((new ListItem())->setText('item2'))
-//    ->addItem((new ListItem())->setText('item3'));
-
-$form = (new Form)->setAttrs([
-    'action' => 'test.php',
-    'method' => 'POST'
-]);
+$form = (new Form)->setAttrs(['action' => '', 'method' => 'GET']);
 
 echo $form->open();
-// здесь потом будут элементы формы
+echo (new Input)->setAttr('name', 'year')->setAttr('value', 18);
+echo (new Input)->setAttr('type', 'submit');
 echo $form->close();
+?>
