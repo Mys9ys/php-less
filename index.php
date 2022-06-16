@@ -180,3 +180,4 @@ echo (new Input)->setAttr('name', 'year')->setAttr('value', 18);
 echo (new Input)->setAttr('type', 'submit');
 echo $form->close();
 ?>
+
