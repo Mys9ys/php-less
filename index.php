@@ -1,8 +1,10 @@
 <?php
 
+use classes\Checkbox;
 use classes\Date;
 use classes\File;
 use classes\Form;
+use classes\Hidden;
 use classes\HtmlList;
 use classes\Image;
 use classes\Input;
@@ -10,7 +12,11 @@ use classes\Interval;
 use classes\Link;
 use classes\ListItem;
 use classes\Ol;
+use classes\Password;
+use classes\Radio;
+use classes\Submit;
 use classes\Tag;
+use classes\Textarea;
 use classes\Ul;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/internal_settings.php';
@@ -112,72 +118,32 @@ $date2 = new Date('2022-06-03');
 //?>
 <br>
 <?php
-// Выведет <input class="eee">:
-echo (new Tag('input'))->addClass('eee')->open();
-?>
-<?php
-// Выведет <input class="eee bbb">:
-echo (new Tag('input'))->addClass('eee')->addClass('bbb')->open();
-?>
-<?php
-// Выведет <input class="eee bbb kkk">:
-echo (new Tag('input'))
-    ->setAttr('class', 'eee bbb')
-    ->addClass('kkk')->open();
-?>
-<?php
-// Выведет <input class="eee bbb">:
-echo (new Tag('input'))
-    ->setAttr('class', 'eee bbb')
-    ->addClass('eee') // такой класс уже есть и не добавится
-    ->open();
-?>
-
-<?php
-// Выведет <input class="eee bbb">:
-echo (new Tag('input'))
-    ->addClass('eee')
-    ->addClass('bbb')
-    ->addClass('eee') // такой класс уже есть и не добавится
-    ->open();
-?>
-
-<?php
-echo (new Tag('input'))
-    ->setAttr('class', 'eee zzz kkk') // добавим 3 класса
-    ->removeClass('zzz') // удалим класс 'zzz'
-    ->open(); // выведет <input class="eee kkk">
-?>
-
-<?php
-//
-//$newTag = new Tag('span');
-//
-//$newTag->setAttr('id', 'newTag')->setAttr('class', 'eee zzz kkk');
-//
-//echo $newTag->open() . 'text' . $newTag->close();
-//
-//print_debug($newTag->getName());
-//print_debug($newTag->getAttrs());
-//print_debug($newTag->getAttr('id'));
-//print_debug($newTag->getAttr('ids'));
-//
-//$img1 = new Image();
-//$img1->setAttr('src', 'img/shield_1.png');
-//$img1->setAttrs(['width'=>200, 'height'=>200]);
-//echo $img1;
-//
-//echo (new Link())->setText('index')->show();
-//
-//echo (new Link())->setAttr('href', '/test.html')->setText('link')->show();
-//
-?>
-<?php
-$form = (new Form)->setAttrs(['action' => '', 'method' => 'GET']);
+$form = (new Form)->setAttrs(['action' => '/', 'method' => 'GET']);
 
 echo $form->open();
-echo (new Input)->setAttr('name', 'year')->setAttr('value', 18);
-echo (new Input)->setAttr('type', 'submit');
+echo (new Input)->setAttr('name', 'year');
+
+echo (new Password)->setAttr('name', 'passw');
+echo (new Textarea)->setAttr('name', 'text')->show();
+
+echo (new Hidden)->setAttr('name', 'id');
+
+echo new Submit;
 echo $form->close();
 ?>
 
+<?php
+$form = (new Form)->setAttrs([
+    'action' => '',
+    'method' => 'GET'
+]);
+
+echo $form->open();
+echo (new Checkbox)->setAttr('name', 'checkbox');
+echo (new Input)->setAttr('name', 'user');
+echo (new Radio)->setAttr('name', 'radio');
+echo (new Radio)->setAttr('name', 'radio');
+
+echo new Submit;
+echo $form->close();
+?>
