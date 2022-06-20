@@ -12,9 +12,9 @@ use classes\Interval;
 use classes\Link;
 use classes\ListItem;
 use classes\Ol;
-use classes\Password;
+use classes\Option;use classes\Password;
 use classes\Radio;
-use classes\Submit;
+use classes\Select;use classes\Submit;
 use classes\Tag;
 use classes\Textarea;
 use classes\Ul;
@@ -146,4 +146,12 @@ echo (new Radio)->setAttr('name', 'radio');
 
 echo new Submit;
 echo $form->close();
+?>
+
+<?php
+echo (new Select)
+    ->add( (new Option())->setText('item1') )
+    ->add( (new Option())->setText('item2')->setSelected() )
+    ->add( (new Option())->setText('item3') )
+    ->show();
 ?>
