@@ -16,6 +16,7 @@ use classes\Option;use classes\Password;
 use classes\Radio;
 use classes\Select;use classes\Submit;
 use classes\Tag;
+use classes\TagHelper;
 use classes\Textarea;
 use classes\Ul;
 
@@ -154,4 +155,17 @@ echo (new Select)
     ->add( (new Option())->setText('item2')->setSelected() )
     ->add( (new Option())->setText('item3') )
     ->show();
+?>
+<?php
+$th = new TagHelper();
+echo $th->open('div') . 'text' . $th->close('div'); // <div>text</div>
+?>
+
+<?php
+$th = new TagHelper();
+
+echo $th->open('form', ['action' => 'test.php', 'method' => 'GET']);
+echo $th->open('input', ['name' => 'year']);
+echo $th->open('input', ['type' => 'submit']);
+echo $th->close('form');
 ?>
