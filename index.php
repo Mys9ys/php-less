@@ -4,6 +4,7 @@ use classes\Checkbox;
 use classes\Date;
 use classes\File;
 use classes\Form;
+use classes\FormHelper;
 use classes\Hidden;
 use classes\HtmlList;
 use classes\Image;
@@ -168,4 +169,27 @@ echo $th->open('form', ['action' => 'test.php', 'method' => 'GET']);
 echo $th->open('input', ['name' => 'year']);
 echo $th->open('input', ['type' => 'submit']);
 echo $th->close('form');
+?>
+
+<?php
+$fh = new FormHelper();
+
+echo $fh->openForm(['action' => '', 'method' => 'GET']);
+echo $fh->input(['name' => 'year']);
+echo $fh->checkbox(['name' => 'check']);
+echo $fh->textarea(['name'=>'taexarea', 'class' => 't1', 'text'=>'text test']);
+echo $fh->submit();
+echo $fh->closeForm();
+?>
+
+<?php
+$fh = new FormHelper();
+
+echo $fh->select(
+    ['name' => 'list', 'class' => 'eee'],
+    [
+        ['text' => 'item1', 'attrs' => ['value' => '1']],
+        ['text' => 'item2', 'attrs' => ['value' => '1', 'selected' => true]],
+        ['text' => 'item1', 'attrs' => ['value' => '1', 'class' => 'last']],
+    ]);
 ?>
