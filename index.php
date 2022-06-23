@@ -1,6 +1,7 @@
 <?php
 
 use classes\Checkbox;
+use classes\CookieShell;
 use classes\Date;
 use classes\File;
 use classes\Form;
@@ -120,76 +121,92 @@ $date2 = new Date('2022-06-03');
 //?>
 <br>
 <?php
-$form = (new Form)->setAttrs(['action' => '/', 'method' => 'GET']);
-
-echo $form->open();
-echo (new Input)->setAttr('name', 'year');
-
-echo (new Password)->setAttr('name', 'passw');
-echo (new Textarea)->setAttr('name', 'text')->show();
-
-echo (new Hidden)->setAttr('name', 'id');
-
-echo new Submit;
-echo $form->close();
-?>
+//$form = (new Form)->setAttrs(['action' => '/', 'method' => 'GET']);
+//
+//echo $form->open();
+//echo (new Input)->setAttr('name', 'year');
+//
+//echo (new Password)->setAttr('name', 'passw');
+//echo (new Textarea)->setAttr('name', 'text')->show();
+//
+//echo (new Hidden)->setAttr('name', 'id');
+//
+//echo new Submit;
+//echo $form->close();
+//?>
+<!---->
+<?php
+//$form = (new Form)->setAttrs([
+//    'action' => '',
+//    'method' => 'GET'
+//]);
+//
+//echo $form->open();
+//echo (new Checkbox)->setAttr('name', 'checkbox');
+//echo (new Input)->setAttr('name', 'user');
+//echo (new Radio)->setAttr('name', 'radio');
+//echo (new Radio)->setAttr('name', 'radio');
+//
+//echo new Submit;
+//echo $form->close();
+//?>
+<!---->
+<?php
+//echo (new Select)
+//    ->add( (new Option())->setText('item1') )
+//    ->add( (new Option())->setText('item2')->setSelected() )
+//    ->add( (new Option())->setText('item3') )
+//    ->show();
+//?>
+<?php
+//$th = new TagHelper();
+//echo $th->open('div') . 'text' . $th->close('div'); // <div>text</div>
+//?>
+<!---->
+<?php
+//$th = new TagHelper();
+//
+//echo $th->open('form', ['action' => 'test.php', 'method' => 'GET']);
+//echo $th->open('input', ['name' => 'year']);
+//echo $th->open('input', ['type' => 'submit']);
+//echo $th->close('form');
+//?>
+<!---->
+<?php
+//$fh = new FormHelper();
+//
+//echo $fh->openForm(['action' => '', 'method' => 'GET']);
+//echo $fh->input(['name' => 'year']);
+//echo $fh->checkbox(['name' => 'check']);
+//echo $fh->textarea(['name'=>'taexarea', 'class' => 't1', 'text'=>'text test']);
+//echo $fh->submit();
+//echo $fh->closeForm();
+//?>
+<!---->
+<?php
+//$fh = new FormHelper();
+//
+//echo $fh->select(
+//    ['name' => 'list', 'class' => 'eee'],
+//    [
+//        ['text' => 'item1', 'attrs' => ['value' => '1']],
+//        ['text' => 'item2', 'attrs' => ['value' => '1', 'selected' => true]],
+//        ['text' => 'item1', 'attrs' => ['value' => '1', 'class' => 'last']],
+//    ]);
+//?>
 
 <?php
-$form = (new Form)->setAttrs([
-    'action' => '',
-    'method' => 'GET'
-]);
+$csh = new CookieShell;
+$csh->set('test', '123', 3600 * 24);
+var_dump($_COOKIE['test']);
+echo '<br>';
+echo $csh->get('test');
+echo '<br>';
+echo $csh->exists('test');
+echo '<br>';
 
-echo $form->open();
-echo (new Checkbox)->setAttr('name', 'checkbox');
-echo (new Input)->setAttr('name', 'user');
-echo (new Radio)->setAttr('name', 'radio');
-echo (new Radio)->setAttr('name', 'radio');
-
-echo new Submit;
-echo $form->close();
-?>
-
-<?php
-echo (new Select)
-    ->add( (new Option())->setText('item1') )
-    ->add( (new Option())->setText('item2')->setSelected() )
-    ->add( (new Option())->setText('item3') )
-    ->show();
-?>
-<?php
-$th = new TagHelper();
-echo $th->open('div') . 'text' . $th->close('div'); // <div>text</div>
-?>
-
-<?php
-$th = new TagHelper();
-
-echo $th->open('form', ['action' => 'test.php', 'method' => 'GET']);
-echo $th->open('input', ['name' => 'year']);
-echo $th->open('input', ['type' => 'submit']);
-echo $th->close('form');
-?>
-
-<?php
-$fh = new FormHelper();
-
-echo $fh->openForm(['action' => '', 'method' => 'GET']);
-echo $fh->input(['name' => 'year']);
-echo $fh->checkbox(['name' => 'check']);
-echo $fh->textarea(['name'=>'taexarea', 'class' => 't1', 'text'=>'text test']);
-echo $fh->submit();
-echo $fh->closeForm();
-?>
-
-<?php
-$fh = new FormHelper();
-
-echo $fh->select(
-    ['name' => 'list', 'class' => 'eee'],
-    [
-        ['text' => 'item1', 'attrs' => ['value' => '1']],
-        ['text' => 'item2', 'attrs' => ['value' => '1', 'selected' => true]],
-        ['text' => 'item1', 'attrs' => ['value' => '1', 'class' => 'last']],
-    ]);
+$csh->del('test');
+echo $csh->get('test'); // выведет null
+var_dump($csh->get('test'));
+var_dump($csh->exists('test'));
 ?>
