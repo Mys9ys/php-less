@@ -16,7 +16,9 @@ use classes\ListItem;
 use classes\Ol;
 use classes\Option;use classes\Password;
 use classes\Radio;
-use classes\Select;use classes\Submit;
+use classes\Select;
+use classes\SessionShell;
+use classes\Submit;
 use classes\Tag;
 use classes\TagHelper;
 use classes\Textarea;
@@ -196,17 +198,31 @@ $date2 = new Date('2022-06-03');
 //?>
 
 <?php
-$csh = new CookieShell;
-$csh->set('test', '123', 3600 * 24);
-var_dump($_COOKIE['test']);
-echo '<br>';
-echo $csh->get('test');
-echo '<br>';
-echo $csh->exists('test');
-echo '<br>';
+//$csh = new CookieShell;
+//$csh->set('test', '123', 3600 * 24);
+//var_dump($_COOKIE['test']);
+//echo '<br>';
+//echo $csh->get('test');
+//echo '<br>';
+//echo $csh->exists('test');
+//echo '<br>';
+//
+//$csh->del('test');
+//echo $csh->get('test'); // выведет null
+//var_dump($csh->get('test'));
+//var_dump($csh->exists('test'));
+?>
 
-$csh->del('test');
-echo $csh->get('test'); // выведет null
-var_dump($csh->get('test'));
-var_dump($csh->exists('test'));
+<?php
+$ses = new SessionShell();
+
+$ses->set('mysession', 111);
+echo $ses->get('mysession');
+var_dump($ses->exists('mysession'));
+$ses->del('mysession');
+var_dump($ses->exists('mysession'));
+$ses->destroy();
+var_dump($ses->exists('mysession'));
+
+
 ?>
