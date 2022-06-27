@@ -7,7 +7,7 @@ use interfaces\iFile;
 class File implements iFile
 {
     protected $filePath;
-    protected $pathinfo = [];
+    protected $pathInfo = [];
 
     public function __construct($filePath)
     {
@@ -16,7 +16,7 @@ class File implements iFile
         $file = fopen($filePath, 'a');
         fclose($file);
 
-        $this->pathinfo = pathinfo($this->filePath);
+        $this->pathInfo = pathInfo($this->filePath);
     }
 
     public function getPath()
@@ -28,19 +28,19 @@ class File implements iFile
     public function getDir()
     {
         // папка файла
-        return $this->pathinfo['dirname'];
+        return $this->pathInfo['dirname'];
     }
 
     public function getName()
     {
         // имя файла
-        return $this->pathinfo['filename'];
+        return $this->pathInfo['filename'];
     }
 
     public function getExt()
     {
         // расширение файла
-        return $this->pathinfo['extension'];
+        return $this->pathInfo['extension'];
     }
 
     public function getSize()

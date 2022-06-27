@@ -4,6 +4,7 @@ use classes\Checkbox;
 use classes\CookieShell;
 use classes\Date;
 use classes\File;
+use classes\FileManipulator;
 use classes\Form;
 use classes\FormHelper;
 use classes\Hidden;
@@ -214,15 +215,28 @@ $date2 = new Date('2022-06-03');
 ?>
 
 <?php
-$ses = new SessionShell();
+//$ses = new SessionShell();
+//
+//$ses->set('mysession', 111);
+//echo $ses->get('mysession');
+//var_dump($ses->exists('mysession'));
+//$ses->del('mysession');
+//var_dump($ses->exists('mysession'));
+//$ses->destroy();
+//var_dump($ses->exists('mysession'));
 
-$ses->set('mysession', 111);
-echo $ses->get('mysession');
-var_dump($ses->exists('mysession'));
-$ses->del('mysession');
-var_dump($ses->exists('mysession'));
-$ses->destroy();
-var_dump($ses->exists('mysession'));
+$file = new FileManipulator();
+
+$file->create($_SERVER['DOCUMENT_ROOT'] . '/files/test.txt');
+$file->delete($_SERVER['DOCUMENT_ROOT'] . '/files/test.txt');
+
+$file->create($_SERVER['DOCUMENT_ROOT'] . '/files/test2.txt');
+$file->rename($_SERVER['DOCUMENT_ROOT'] . '/files/test2.txt', 'test22.txt');
+$file->replace($_SERVER['DOCUMENT_ROOT'] . '/files/test22.txt', $_SERVER['DOCUMENT_ROOT'] . '/img/test22.txt');
+
+$file->create($_SERVER['DOCUMENT_ROOT'] . '/files/test3.txt');
+echo $file->weigh($_SERVER['DOCUMENT_ROOT'] . '/files/test3.txt');
+$file->copy($_SERVER['DOCUMENT_ROOT'] . '/files/test3.txt', $_SERVER['DOCUMENT_ROOT'] . '/img/test3.txt');
 
 
 ?>
