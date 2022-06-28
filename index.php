@@ -24,6 +24,7 @@ use classes\Tag;
 use classes\TagHelper;
 use classes\Textarea;
 use classes\Ul;
+use classes\Validator;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/internal_settings.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/functions.php';
@@ -225,18 +226,22 @@ $date2 = new Date('2022-06-03');
 //$ses->destroy();
 //var_dump($ses->exists('mysession'));
 
-$file = new FileManipulator();
+//$file = new FileManipulator();
+//
+//$file->create($_SERVER['DOCUMENT_ROOT'] . '/files/test.txt');
+//$file->delete($_SERVER['DOCUMENT_ROOT'] . '/files/test.txt');
+//
+//$file->create($_SERVER['DOCUMENT_ROOT'] . '/files/test2.txt');
+//$file->rename($_SERVER['DOCUMENT_ROOT'] . '/files/test2.txt', 'test22.txt');
+//$file->replace($_SERVER['DOCUMENT_ROOT'] . '/files/test22.txt', $_SERVER['DOCUMENT_ROOT'] . '/img/test22.txt');
+//
+//$file->create($_SERVER['DOCUMENT_ROOT'] . '/files/test3.txt');
+//echo $file->weigh($_SERVER['DOCUMENT_ROOT'] . '/files/test3.txt');
+//$file->copy($_SERVER['DOCUMENT_ROOT'] . '/files/test3.txt', $_SERVER['DOCUMENT_ROOT'] . '/img/test3.txt');
+//
 
-$file->create($_SERVER['DOCUMENT_ROOT'] . '/files/test.txt');
-$file->delete($_SERVER['DOCUMENT_ROOT'] . '/files/test.txt');
+$valid = new Validator();
 
-$file->create($_SERVER['DOCUMENT_ROOT'] . '/files/test2.txt');
-$file->rename($_SERVER['DOCUMENT_ROOT'] . '/files/test2.txt', 'test22.txt');
-$file->replace($_SERVER['DOCUMENT_ROOT'] . '/files/test22.txt', $_SERVER['DOCUMENT_ROOT'] . '/img/test22.txt');
-
-$file->create($_SERVER['DOCUMENT_ROOT'] . '/files/test3.txt');
-echo $file->weigh($_SERVER['DOCUMENT_ROOT'] . '/files/test3.txt');
-$file->copy($_SERVER['DOCUMENT_ROOT'] . '/files/test3.txt', $_SERVER['DOCUMENT_ROOT'] . '/img/test3.txt');
-
+print_debug($valid->inLength('gf', 20,24));
 
 ?>
